@@ -20,7 +20,7 @@ int main(int, char *[])
   cerr << "After update, file has " << rdr->GetOutput()->GetNumberOfCells() << " cells." << endl;
 
   vtkDataSet* ds = rdr->GetOutput();
-  //ds->GetPointData()->SetActiveVectors("hardyglobal");
+  ds->GetPointData()->SetActiveScalars("hardyglobal");
 
  
   // Create a plane to cut,here it cuts in the XZ direction (xz normal=(1,0,0);XY =(0,0,1),YZ =(0,1,0)
