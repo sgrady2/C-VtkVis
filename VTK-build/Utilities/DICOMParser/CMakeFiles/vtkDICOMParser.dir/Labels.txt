@@ -1,0 +1,6 @@
+# Target labels
+ vtkDICOMParser
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/Utilities/DICOMParser/DICOMFile.cxx
+/home/cheen/Desktop/410/VTK/Utilities/DICOMParser/DICOMParser.cxx
+/home/cheen/Desktop/410/VTK/Utilities/DICOMParser/DICOMAppHelper.cxx

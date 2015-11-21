@@ -1,0 +1,6 @@
+# Target labels
+ vtkIOVideo
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/IO/Video/vtkVideoSource.cxx
+/home/cheen/Desktop/410/VTK/IO/Video/vtkVideoSource.h
+/home/cheen/Desktop/410/VTK-build/IO/Video/vtkIOVideoModule.h

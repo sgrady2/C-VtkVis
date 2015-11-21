@@ -1,0 +1,16 @@
+# Target labels
+ vtkDomainsChemistryOpenGL2
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/Domains/ChemistryOpenGL2/vtkOpenGLMoleculeMapper.cxx
+/home/cheen/Desktop/410/VTK/Domains/ChemistryOpenGL2/vtkOpenGLSphereMapper.cxx
+/home/cheen/Desktop/410/VTK/Domains/ChemistryOpenGL2/vtkOpenGLStickMapper.cxx
+/home/cheen/Desktop/410/VTK-build/Domains/ChemistryOpenGL2/vtkSphereMapperVS.cxx
+/home/cheen/Desktop/410/VTK-build/Domains/ChemistryOpenGL2/vtkStickMapperVS.cxx
+/home/cheen/Desktop/410/VTK-build/Domains/ChemistryOpenGL2/vtkDomainsChemistryOpenGL2ObjectFactory.cxx
+/home/cheen/Desktop/410/VTK/Domains/ChemistryOpenGL2/vtkOpenGLMoleculeMapper.h
+/home/cheen/Desktop/410/VTK/Domains/ChemistryOpenGL2/vtkOpenGLSphereMapper.h
+/home/cheen/Desktop/410/VTK/Domains/ChemistryOpenGL2/vtkOpenGLStickMapper.h
+/home/cheen/Desktop/410/VTK-build/Domains/ChemistryOpenGL2/vtkDomainsChemistryOpenGL2ObjectFactory.h
+/home/cheen/Desktop/410/VTK-build/Domains/ChemistryOpenGL2/vtkDomainsChemistryOpenGL2Module.h
+/home/cheen/Desktop/410/VTK-build/Domains/ChemistryOpenGL2/vtkSphereMapperVS.cxx.rule
+/home/cheen/Desktop/410/VTK-build/Domains/ChemistryOpenGL2/vtkStickMapperVS.cxx.rule

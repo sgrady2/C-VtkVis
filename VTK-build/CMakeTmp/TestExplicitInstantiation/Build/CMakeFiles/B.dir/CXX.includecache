@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cheen/Desktop/410/VTK-build/CMakeTmp/TestExplicitInstantiation/A.h
+
+/home/cheen/Desktop/410/VTK-build/CMakeTmp/TestExplicitInstantiation/B.cxx
+A.h
+/home/cheen/Desktop/410/VTK-build/CMakeTmp/TestExplicitInstantiation/A.h
+

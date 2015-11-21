@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC   -w -w -O3 -DNDEBUG  -Wl,--no-undefined -lc    -shared -Wl,-soname,libvtkglew-6.3.so.1 -o ../../../lib/libvtkglew-6.3.so.1 CMakeFiles/vtkglew.dir/src/glew.c.o -lGLU -lGL -lSM -lICE -lX11 -lXext 

@@ -1,0 +1,9 @@
+bl isovalues 2.5 and 5 any color
+
+br hedgehod glyphs of grad variable choose density and colors
+
+tl 2 slices of hardyglobal
+
+tr streamlines of grad using RK4 seed location go from -9, 0 0 to 9, 0 0 
+there are 19 total seeds, meaning they cover each integer
+

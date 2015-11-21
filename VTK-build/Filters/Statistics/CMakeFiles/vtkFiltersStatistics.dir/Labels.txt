@@ -1,0 +1,38 @@
+# Target labels
+ vtkFiltersStatistics
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkAutoCorrelativeStatistics.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkBivariateLinearTableThreshold.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkComputeQuartiles.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkContingencyStatistics.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkCorrelativeStatistics.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkDescriptiveStatistics.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkHighestDensityRegionsStatistics.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkExtractFunctionalBagPlot.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkKMeansDistanceFunctorCalculator.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkKMeansDistanceFunctor.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkKMeansStatistics.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkMultiCorrelativeStatistics.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkOrderStatistics.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkPCAStatistics.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkStatisticsAlgorithm.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkStrahlerMetric.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkStreamingStatistics.cxx
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkAutoCorrelativeStatistics.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkBivariateLinearTableThreshold.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkComputeQuartiles.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkContingencyStatistics.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkCorrelativeStatistics.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkDescriptiveStatistics.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkHighestDensityRegionsStatistics.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkExtractFunctionalBagPlot.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkKMeansDistanceFunctorCalculator.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkKMeansDistanceFunctor.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkKMeansStatistics.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkMultiCorrelativeStatistics.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkOrderStatistics.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkPCAStatistics.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkStatisticsAlgorithm.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkStrahlerMetric.h
+/home/cheen/Desktop/410/VTK/Filters/Statistics/vtkStreamingStatistics.h
+/home/cheen/Desktop/410/VTK-build/Filters/Statistics/vtkFiltersStatisticsModule.h

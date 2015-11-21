@@ -1,0 +1,6 @@
+# Target labels
+ vtkTestingIOSQL
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/Testing/IOSQL/DatabaseSchemaWith2Tables.cxx
+/home/cheen/Desktop/410/VTK/Testing/IOSQL/DatabaseSchemaWith2Tables.h
+/home/cheen/Desktop/410/VTK-build/Testing/IOSQL/vtkTestingIOSQLModule.h

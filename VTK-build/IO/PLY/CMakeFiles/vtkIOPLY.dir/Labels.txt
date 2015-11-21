@@ -1,0 +1,10 @@
+# Target labels
+ vtkIOPLY
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/IO/PLY/vtkPLY.cxx
+/home/cheen/Desktop/410/VTK/IO/PLY/vtkPLYReader.cxx
+/home/cheen/Desktop/410/VTK/IO/PLY/vtkPLYWriter.cxx
+/home/cheen/Desktop/410/VTK/IO/PLY/vtkPLY.h
+/home/cheen/Desktop/410/VTK/IO/PLY/vtkPLYReader.h
+/home/cheen/Desktop/410/VTK/IO/PLY/vtkPLYWriter.h
+/home/cheen/Desktop/410/VTK-build/IO/PLY/vtkIOPLYModule.h

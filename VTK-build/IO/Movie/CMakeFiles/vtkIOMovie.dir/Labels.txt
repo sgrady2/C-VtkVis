@@ -1,0 +1,9 @@
+# Target labels
+ vtkIOMovie
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/IO/Movie/vtkGenericMovieWriter.cxx
+/home/cheen/Desktop/410/VTK/IO/Movie/vtkOggTheoraWriter.cxx
+/home/cheen/Desktop/410/VTK-build/IO/Movie/vtkIOMovieConfigure.h
+/home/cheen/Desktop/410/VTK/IO/Movie/vtkGenericMovieWriter.h
+/home/cheen/Desktop/410/VTK/IO/Movie/vtkOggTheoraWriter.h
+/home/cheen/Desktop/410/VTK-build/IO/Movie/vtkIOMovieModule.h

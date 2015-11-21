@@ -1,0 +1,23 @@
+# Target labels
+ vtkIOMINC
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMINCImageAttributes.cxx
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMINCImageReader.cxx
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMINCImageWriter.cxx
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNIObjectReader.cxx
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNIObjectWriter.cxx
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNITagPointReader.cxx
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNITagPointWriter.cxx
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNITransformReader.cxx
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNITransformWriter.cxx
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMINC.h
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMINCImageAttributes.h
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMINCImageReader.h
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMINCImageWriter.h
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNIObjectReader.h
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNIObjectWriter.h
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNITagPointReader.h
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNITagPointWriter.h
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNITransformReader.h
+/home/cheen/Desktop/410/VTK/IO/MINC/vtkMNITransformWriter.h
+/home/cheen/Desktop/410/VTK-build/IO/MINC/vtkIOMINCModule.h

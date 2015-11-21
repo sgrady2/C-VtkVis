@@ -1,0 +1,18 @@
+# Target labels
+ vtkImagingStencil
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkImageStencil.cxx
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkImageStencilToImage.cxx
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkImageToImageStencil.cxx
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkImplicitFunctionToImageStencil.cxx
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkLassoStencilSource.cxx
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkPolyDataToImageStencil.cxx
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkROIStencilSource.cxx
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkImageStencil.h
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkImageStencilToImage.h
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkImageToImageStencil.h
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkImplicitFunctionToImageStencil.h
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkLassoStencilSource.h
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkPolyDataToImageStencil.h
+/home/cheen/Desktop/410/VTK/Imaging/Stencil/vtkROIStencilSource.h
+/home/cheen/Desktop/410/VTK-build/Imaging/Stencil/vtkImagingStencilModule.h

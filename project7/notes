@@ -1,0 +1,15 @@
+notes 410
+
+grad dataset 
+use mapper to generate an output port
+SetInputData(ds)
+
+for streamline use setinputconnection for data
+
+StreamTracer uses 
+
+vtkLookupTable for coloring
+
+default colormap needs min and max scalar values
+
+

@@ -1,0 +1,34 @@
+P[0] = 0,0,0
+Y[0] = 0s
+
+dt = 0.01s
+i=0
+T=T[0]
+
+while (T < .01)
+{
+   v = interpolate velocity
+   P[i+1] = P[i] + v + dT
+   T[i+1] = T[i] = dt
+   i++
+   T+= dT
+
+}
+
+
+Runge-Kutta Method RK4
+
+step size h
+advance step now returns pi+1/6*h*k+..
+k1 = v (ti,pi)
+k2 = v (ti+h/2, pi+h/2*k1)
+k3 = v (ti+h/2, pi+h/2*k2)
+k4 = v (ti +h, pi+h*k3)
+
+new time :
+
+
+h=.01 for RK4
+what h for euler gives same accuracy?
+
+

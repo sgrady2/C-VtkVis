@@ -1,0 +1,41 @@
+FILE(REMOVE_RECURSE
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/vtkRenderingAnnotationCxxTests.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestAxisActor3D.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestBarChartActor.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCaptionActor2D.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestConvexHull2D.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCornerAnnotation.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxes2DMode.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxes3.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesWithGridLines.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesWithXInnerGrids.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesWithXInnerPolys.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesWithXLines.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesWithYInnerGrids.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesWithYInnerPolys.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesWithYLines.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesWithZInnerGrids.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesWithZInnerPolys.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesWithZLines.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestLegendBoxActor.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestLegendScaleActor.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestPieChartActor.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestPolarAxes.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestScalarBar.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestSpiderPlotActor.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesOrientedBoundingBox.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesIntersectionPoint.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesInnerGridAll.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesInnerGridClosest.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesInnerGridFurthest.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesSticky.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestCubeAxesStickyCentered.cxx.o"
+  "CMakeFiles/vtkRenderingAnnotationCxxTests.dir/TestXYPlotActor.cxx.o"
+  "../../../../bin/vtkRenderingAnnotationCxxTests.pdb"
+  "../../../../bin/vtkRenderingAnnotationCxxTests"
+)
+
+# Per-language clean rules from dependency scanning.
+FOREACH(lang CXX)
+  INCLUDE(CMakeFiles/vtkRenderingAnnotationCxxTests.dir/cmake_clean_${lang}.cmake OPTIONAL)
+ENDFOREACH(lang)

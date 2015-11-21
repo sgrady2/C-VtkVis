@@ -1,0 +1,8 @@
+# Target labels
+ vtkCommonColor
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/Common/Color/vtkColorSeries.cxx
+/home/cheen/Desktop/410/VTK/Common/Color/vtkNamedColors.cxx
+/home/cheen/Desktop/410/VTK/Common/Color/vtkColorSeries.h
+/home/cheen/Desktop/410/VTK/Common/Color/vtkNamedColors.h
+/home/cheen/Desktop/410/VTK-build/Common/Color/vtkCommonColorModule.h

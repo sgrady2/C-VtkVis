@@ -1,0 +1,18 @@
+# Target labels
+ vtkFiltersTexture
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkTextureMapToCylinder.cxx
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkTextureMapToPlane.cxx
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkTextureMapToSphere.cxx
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkImplicitTextureCoords.cxx
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkThresholdTextureCoords.cxx
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkTransformTextureCoords.cxx
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkTriangularTCoords.cxx
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkTextureMapToCylinder.h
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkTextureMapToPlane.h
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkTextureMapToSphere.h
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkImplicitTextureCoords.h
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkThresholdTextureCoords.h
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkTransformTextureCoords.h
+/home/cheen/Desktop/410/VTK/Filters/Texture/vtkTriangularTCoords.h
+/home/cheen/Desktop/410/VTK-build/Filters/Texture/vtkFiltersTextureModule.h

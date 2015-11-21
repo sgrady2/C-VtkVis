@@ -1,0 +1,15 @@
+# Target labels
+ vtkIOImport
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/IO/Import/vtk3DSImporter.cxx
+/home/cheen/Desktop/410/VTK/IO/Import/vtkImporter.cxx
+/home/cheen/Desktop/410/VTK/IO/Import/vtkVRMLImporter.cxx
+/home/cheen/Desktop/410/VTK/IO/Import/vtkOBJImporter.cxx
+/home/cheen/Desktop/410/VTK/IO/Import/vtkOBJImporterInternals.cxx
+/home/cheen/Desktop/410/VTK/IO/Import/vtk3DS.h
+/home/cheen/Desktop/410/VTK/IO/Import/vtk3DSImporter.h
+/home/cheen/Desktop/410/VTK/IO/Import/vtkImporter.h
+/home/cheen/Desktop/410/VTK/IO/Import/vtkVRMLImporter.h
+/home/cheen/Desktop/410/VTK/IO/Import/vtkOBJImporter.h
+/home/cheen/Desktop/410/VTK/IO/Import/vtkOBJImporterInternals.h
+/home/cheen/Desktop/410/VTK-build/IO/Import/vtkIOImportModule.h

@@ -1,0 +1,30 @@
+# CMake generated Testfile for 
+# Source directory: /home/cheen/Desktop/410/VTK/Rendering/OpenGL2/Testing/Cxx
+# Build directory: /home/cheen/Desktop/410/VTK-build/Rendering/OpenGL2/Testing/Cxx
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestPointGaussianMapper "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestPointGaussianMapper" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestPointGaussianMapper.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestPointGaussianMapper PROPERTIES  LABELS "")
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestPointGaussianMapperOpacity "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestPointGaussianMapperOpacity" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestPointGaussianMapperOpacity.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestPointGaussianMapperOpacity PROPERTIES  LABELS "")
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestUserShader "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestUserShader" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestUserShader.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestUserShader PROPERTIES  LABELS "")
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestUserShader2 "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestUserShader2" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestUserShader2.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestUserShader2 PROPERTIES  LABELS "")
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestVBOPLYMapper "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestVBOPLYMapper" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestVBOPLYMapper.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestVBOPLYMapper PROPERTIES  LABELS "")
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestVBOPointsLines "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestVBOPointsLines" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestVBOPointsLines.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestVBOPointsLines PROPERTIES  LABELS "")
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestGaussianBlurPass "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestGaussianBlurPass" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestGaussianBlurPass.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestGaussianBlurPass PROPERTIES  LABELS "")
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestBlurAndSobelPasses "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestBlurAndSobelPasses" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestBlurAndSobelPasses.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestBlurAndSobelPasses PROPERTIES  LABELS "")
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestShadowMapBakerPass "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestShadowMapBakerPass" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestShadowMapBakerPass.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestShadowMapBakerPass PROPERTIES  LABELS "")
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestShadowMapPass "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestShadowMapPass" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestShadowMapPass.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestShadowMapPass PROPERTIES  LABELS "")
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestSobelGradientMagnitudePass "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestSobelGradientMagnitudePass" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestSobelGradientMagnitudePass.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestSobelGradientMagnitudePass PROPERTIES  LABELS "")
+ADD_TEST(vtkRenderingOpenGL2Cxx-TestEDLPass "/home/cheen/Desktop/410/VTK-build/bin/vtkRenderingOpenGL2CxxTests" "TestEDLPass" "-D" "/home/cheen/Desktop/410/VTK-build/ExternalData//Testing" "-T" "/home/cheen/Desktop/410/VTK-build/Testing/Temporary" "-V" "/home/cheen/Desktop/410/VTK-build/ExternalData/Rendering/OpenGL2/Testing/Data/Baseline/TestEDLPass.png")
+SET_TESTS_PROPERTIES(vtkRenderingOpenGL2Cxx-TestEDLPass PROPERTIES  LABELS "")

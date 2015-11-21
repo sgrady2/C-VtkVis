@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^(tif|fax|port|uv|vtk|tconf|t4|mk|z).*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/cheen/Desktop/410/VTK/ThirdParty/tiff/vtktiff/mkg3states.c
+tif_config.h
+/home/cheen/Desktop/410/VTK/ThirdParty/tiff/vtktiff/tif_config.h
+tif_fax3.h
+/home/cheen/Desktop/410/VTK/ThirdParty/tiff/vtktiff/tif_fax3.h
+
+/home/cheen/Desktop/410/VTK/ThirdParty/tiff/vtktiff/tif_fax3.h
+tiff.h
+/home/cheen/Desktop/410/VTK/ThirdParty/tiff/vtktiff/tiff.h
+
+/home/cheen/Desktop/410/VTK/ThirdParty/tiff/vtktiff/tiff.h
+vtk_tiff_mangle.h
+/home/cheen/Desktop/410/VTK/ThirdParty/tiff/vtktiff/vtk_tiff_mangle.h
+tiffconf.h
+/home/cheen/Desktop/410/VTK/ThirdParty/tiff/vtktiff/tiffconf.h
+
+/home/cheen/Desktop/410/VTK/ThirdParty/tiff/vtktiff/tiffconf.h
+
+/home/cheen/Desktop/410/VTK/ThirdParty/tiff/vtktiff/vtk_tiff_mangle.h
+
+ThirdParty/tiff/vtktiff/tif_config.h
+

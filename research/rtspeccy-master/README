@@ -1,0 +1,59 @@
+                                ========
+                                rtspeccy
+                                ========
+
+
+rtspeccy is a real time spectrum analyzer. Plug in your microphone and
+speak, rtspeccy shall visualize your words. rtspeccy is intended to
+visualize what's being recorded, not what's being played.
+
+Main features:
+
+    - Keep it simple. "It" refers to the code. No complex configuration
+      file, simply a config.h.
+    - Displays the spectrogram using OpenGL.
+    - Split screen: Show history as well as current spectrum.
+    - Freeze, zooming and panning.
+    - Overtone guidelines: Click and hold the left mouse button to show
+      guidelines which indicate where over- and undertones of the
+      current frequency are located.
+    - History is colored via a color ramp.
+    - Free software (GPL3+).
+
+
+Installation
+------------
+
+The following libraries are required:
+
+    - ALSA userland libraries for recording audio
+    - FFTW3 for calculating the spectrum
+    - A GLUT implementation, for example FreeGLUT
+    - OpenGL libraries, probably Mesa on Linux
+
+rtspeccy expects to be run on a POSIX-ish operating system.
+
+Most of the program's options can only be set at compile time. Have a
+look at the shipped config.h.example to see what's possible. It's well
+documented and pretty self explanatory, but you are expected to know a
+little bit of C.
+
+To build the program and install it to /usr/local:
+
+    $ make
+    # make install
+
+If you're on Arch Linux, you can also use the following AUR package:
+
+    - https://aur.archlinux.org/packages/rtspeccy-git/
+
+
+Running
+-------
+
+As there are virtually no options, just run rtspeccy using your favorite
+way of launching programs:
+
+    $ rtspeccy
+
+Refer to the manpage for all options and keyboard/mouse controls.

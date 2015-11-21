@@ -1,0 +1,10 @@
+# Target labels
+ vtkRenderingImage
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/Rendering/Image/vtkImageResliceMapper.cxx
+/home/cheen/Desktop/410/VTK/Rendering/Image/vtkImageSliceCollection.cxx
+/home/cheen/Desktop/410/VTK/Rendering/Image/vtkImageStack.cxx
+/home/cheen/Desktop/410/VTK/Rendering/Image/vtkImageResliceMapper.h
+/home/cheen/Desktop/410/VTK/Rendering/Image/vtkImageSliceCollection.h
+/home/cheen/Desktop/410/VTK/Rendering/Image/vtkImageStack.h
+/home/cheen/Desktop/410/VTK-build/Rendering/Image/vtkRenderingImageModule.h

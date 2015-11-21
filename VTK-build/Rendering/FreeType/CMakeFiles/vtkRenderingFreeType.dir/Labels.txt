@@ -1,0 +1,32 @@
+# Target labels
+ vtkRenderingFreeType
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkFreeTypeStringToImage.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkFreeTypeTools.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkMathTextFreeTypeTextRenderer.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkMathTextUtilities.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkTextRendererStringToImage.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkScaledTextActor.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkVectorText.cxx
+/home/cheen/Desktop/410/VTK-build/Rendering/FreeType/vtkRenderingFreeTypeObjectFactory.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_arial_bold.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_arial_bold_italic.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_arial.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_arial_italic.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_courier_bold.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_courier_bold_italic.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_courier.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_courier_italic.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_times_bold.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_times_bold_italic.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_times.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/fonts/face_times_italic.cxx
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkFreeTypeStringToImage.h
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkFreeTypeTools.h
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkMathTextFreeTypeTextRenderer.h
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkMathTextUtilities.h
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkTextRendererStringToImage.h
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkScaledTextActor.h
+/home/cheen/Desktop/410/VTK/Rendering/FreeType/vtkVectorText.h
+/home/cheen/Desktop/410/VTK-build/Rendering/FreeType/vtkRenderingFreeTypeObjectFactory.h
+/home/cheen/Desktop/410/VTK-build/Rendering/FreeType/vtkRenderingFreeTypeModule.h

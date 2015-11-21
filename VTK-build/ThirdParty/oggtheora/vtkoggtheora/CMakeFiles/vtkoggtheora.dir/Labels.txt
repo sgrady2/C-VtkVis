@@ -1,0 +1,37 @@
+# Target labels
+ vtkoggtheora
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libogg-1.1.4/src/framing.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libogg-1.1.4/src/bitwise.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/analyze.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/apiwrapper.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/bitpack.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/decapiwrapper.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/decinfo.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/decode.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/dequant.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/encapiwrapper.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/encfrag.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/encinfo.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/encode.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/enquant.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/fdct.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/fragment.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/huffdec.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/huffenc.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/idct.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/info.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/internal.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/mathops.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/mcenc.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/quant.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/rate.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/state.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/tokenize.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/x86/mmxencfrag.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/x86/mmxfdct.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/x86/mmxfrag.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/x86/mmxidct.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/x86/mmxstate.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/x86/x86enc.c
+/home/cheen/Desktop/410/VTK/ThirdParty/oggtheora/vtkoggtheora/libtheora-1.1.1/lib/x86/x86state.c

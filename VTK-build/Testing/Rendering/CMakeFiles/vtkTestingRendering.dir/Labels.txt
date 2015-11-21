@@ -1,0 +1,11 @@
+# Target labels
+ vtkTestingRendering
+# Source files and their labels
+/home/cheen/Desktop/410/VTK/Testing/Rendering/vtkRegressionTestImage.h
+/home/cheen/Desktop/410/VTK/Testing/Rendering/vtkTesting.cxx
+/home/cheen/Desktop/410/VTK/Testing/Rendering/vtkTestingInteractor.cxx
+/home/cheen/Desktop/410/VTK/Testing/Rendering/vtkTestingObjectFactory.cxx
+/home/cheen/Desktop/410/VTK/Testing/Rendering/vtkTesting.h
+/home/cheen/Desktop/410/VTK/Testing/Rendering/vtkTestingInteractor.h
+/home/cheen/Desktop/410/VTK/Testing/Rendering/vtkTestingObjectFactory.h
+/home/cheen/Desktop/410/VTK-build/Testing/Rendering/vtkTestingRenderingModule.h
