@@ -1,4 +1,96 @@
+//Sean Grady
+//CIS 410
+#include <vtkSphereSource.h>
+#include <vtkProperty.h>
+#include <vtkPolyData.h>
+#include <vtkSmartPointer.h>
+#include <vtkPolyDataMapper.h>
+#include <vtkActor.h>
+#include <vtkRenderWindow.h>
+#include <vtkRenderer.h>
+#include <vtkRenderWindowInteractor.h>
+#include <vtkDataSetReader.h>
+#include <vtkRectilinearGrid.h>
+#include <vtkPointData.h>
+#include <vtkStreamTracer.h>
+#include <vtkRungeKutta4.h>
+#include <vtkLineSource.h>
+
+int main(int, char *[])
+{
+  vtkDataSetReader *rdr = vtkDataSetReader::New();
+  rdr->SetFileName("proj7.vtk");
+  rdr->Update();
+  cerr << "After update, file has " << rdr->GetOutput()->GetNumberOfCells() << " cells." << endl;
+
+  vtkDataSet* ds = rdr->GetOutput();
+  ds->GetPointData()->SetActiveVectors("grad");
+
+  vtkSmartPointer<vtkRenderWindow> renderWindow = 
+    vtkSmartPointer<vtkRenderWindow>::New();
+ 
+  vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor = 
+    vtkSmartPointer<vtkRenderWindowInteractor>::New();
+ 
+  renderWindowInteractor->SetRenderWindow(renderWindow);  
+
+  int dims[3];
+  vtkRectilinearGrid *rgrid = (vtkRectilinearGrid *) rdr->GetOutput();
+  rgrid->GetDimensions(dims);
+
+  float *X = (float *) rgrid->GetXCoordinates()->GetVoidPointer(0);
+  float *Y = (float *) rgrid->GetYCoordinates()->GetVoidPointer(0);
+  float *F = (float *) rgrid->GetPointData()->GetVectors()->GetVoidPointer(0);
 
 
+	//VTK streamlines for active vector set grad
+  vtkSmartPointer<vtkPolyData> pd =
+  vtkSmartPointer<vtkPolyData>::New();
 
+  vtkSmartPointer<vtkStreamTracer> st =
+  vtkSmartPointer<vtkStreamTracer>::New();
+
+  //set integrator to RK4
+  st->SetInputConnection(rdr->GetOutputPort());
+  st->SetIntegratorTypeToRungeKutta4();
+
+  //need a linesource for 19 points between -9 0 0 and 9 0 0
+  
+  
+  vtkSmartPointer<vtkLineSource> lineSource = 
+    vtkSmartPointer<vtkLineSource>::New();
+
+   lineSource->SetPoint1(-9, 0, 0);
+   lineSource->SetPoint2(9,0,0);
+   lineSource->SetResolution(19);
+ 
+
+  st->SetSourceConnection(lineSource->GetOutputPort());
+  st->SetIntegrationDirectionToForward();
+  //st->SetInitialIntegrationStep (1, 1.0);
+  st->SetMaximumPropagation(1);
+  st->Update();
+  
+
+   vtkSmartPointer<vtkPolyDataMapper> rgridMapper =
+   vtkSmartPointer<vtkPolyDataMapper>::New();
+    rgridMapper->SetInputConnection(st->GetOutputPort());
+    rgridMapper->SetScalarRange(1.9,5.0);
+    rgridMapper->SetColorModeToMapScalars();
+
+   vtkSmartPointer<vtkActor> rgridActor =
+    vtkSmartPointer<vtkActor>::New();
+  rgridActor->SetMapper(rgridMapper);
+  rgridActor->GetProperty()->SetColor(0,0,0);
+  
+   vtkSmartPointer<vtkRenderer> rendererBR = 
+   vtkSmartPointer<vtkRenderer>::New();
+   renderWindow->AddRenderer(rendererBR);
+   
+   renderWindowInteractor->SetRenderWindow(renderWindow);
+   rendererBR->AddActor(rgridActor);
+   rendererBR->ResetCamera();
+   renderWindowInteractor->Render();
+   renderWindowInteractor->Start();
+}
 

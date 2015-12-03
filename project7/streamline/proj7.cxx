@@ -1,131 +1,96 @@
-#include <vtkVersion.h>
-#include <vtkSmartPointer.h>
-#include <vtkActor.h>
-#if VTK_MAJOR_VERSION <= 5
-#include <vtkPLOT3DReader.h>
-#else
-#include <vtkMultiBlockPLOT3DReader.h>
-#include <vtkMultiBlockDataSet.h>
-#endif
-#include <vtkPlaneSource.h>
-#include <vtkPolyDataMapper.h>
-#include <vtkRenderWindow.h>
-#include <vtkRenderWindowInteractor.h>
-#include <vtkRenderer.h>
-#include <vtkStreamLine.h>
-#include <vtkInteractorStyleTrackballCamera.h>
-#include <vtkStructuredGridOutlineFilter.h>
+//Sean Grady
+//CIS 410
+#include <vtkSphereSource.h>
 #include <vtkProperty.h>
- 
-int main(int argc, char *argv[])
+#include <vtkPolyData.h>
+#include <vtkSmartPointer.h>
+#include <vtkPolyDataMapper.h>
+#include <vtkActor.h>
+#include <vtkRenderWindow.h>
+#include <vtkRenderer.h>
+#include <vtkRenderWindowInteractor.h>
+#include <vtkDataSetReader.h>
+#include <vtkRectilinearGrid.h>
+#include <vtkPointData.h>
+#include <vtkStreamTracer.h>
+#include <vtkRungeKutta4.h>
+#include <vtkLineSource.h>
+
+int main(int, char *[])
 {
-  if(argc < 3)
-  {
-    std::cerr << "Required arguments: xyzFile qFile" << std::endl;
-    return EXIT_FAILURE;
-  }
- 
-  std::string xyzFile = argv[1]; // "combxyz.bin";
-  std::string qFile = argv[2]; // "combq.bin";
- 
-#if VTK_MAJOR_VERSION <= 5
-  vtkSmartPointer<vtkPLOT3DReader> pl3d =
-    vtkSmartPointer<vtkPLOT3DReader>::New();
-#else
-  vtkSmartPointer<vtkMultiBlockPLOT3DReader> pl3d =
-    vtkSmartPointer<vtkMultiBlockPLOT3DReader>::New();
-#endif
-  pl3d->SetXYZFileName(xyzFile.c_str());
-  pl3d->SetQFileName(qFile.c_str());
-  pl3d->SetScalarFunctionNumber(100);
-  pl3d->SetVectorFunctionNumber(202);
-  pl3d->Update();
- 
-  // Source of the streamlines
-  vtkSmartPointer<vtkPlaneSource> seeds = 
-    vtkSmartPointer<vtkPlaneSource>::New();
-  seeds->SetXResolution(4);
-  seeds->SetYResolution(4);
-  seeds->SetOrigin(2,-2,26);
-  seeds->SetPoint1(2,2,26);
-  seeds->SetPoint2(2,-2,32);
- 
-  // Streamline itself
-  vtkSmartPointer<vtkStreamLine> streamLine = 
-    vtkSmartPointer<vtkStreamLine>::New();
-#if VTK_MAJOR_VERSION <= 5
-  streamLine->SetInputConnection(pl3d->GetOutputPort());
-  streamLine->SetSource(seeds->GetOutput());
-#else
-  pl3d->Update();
-  streamLine->SetInputData(pl3d->GetOutput()->GetBlock(0));
-  streamLine->SetSourceConnection(seeds->GetOutputPort());
-#endif
-  //streamLine->SetStartPosition(2,-2,30);
-  // as alternative to the SetSource(), which can handle multiple
-  // streamlines, you can set a SINGLE streamline from
-  // SetStartPosition()
-  streamLine->SetMaximumPropagationTime(200);
-  streamLine->SetIntegrationStepLength(.2);
-  streamLine->SetStepLength(.001);
-  streamLine->SetNumberOfThreads(1);
-  streamLine->SetIntegrationDirectionToForward();
-  streamLine->VorticityOn();
- 
-  vtkSmartPointer<vtkPolyDataMapper> streamLineMapper = 
-    vtkSmartPointer<vtkPolyDataMapper>::New();
-  streamLineMapper->SetInputConnection(streamLine->GetOutputPort());
- 
-  vtkSmartPointer<vtkActor> streamLineActor = 
-    vtkSmartPointer<vtkActor>::New();
-  streamLineActor->SetMapper(streamLineMapper);
-  streamLineActor->VisibilityOn();
- 
-  // Outline-Filter for the grid
-  vtkSmartPointer<vtkStructuredGridOutlineFilter> outline = 
-    vtkSmartPointer<vtkStructuredGridOutlineFilter>::New();
-#if VTK_MAJOR_VERSION <= 5
-  outline->SetInputConnection(pl3d->GetOutputPort());
-#else
-  outline->SetInputData(pl3d->GetOutput()->GetBlock(0));
-#endif
-  vtkSmartPointer<vtkPolyDataMapper> outlineMapper = 
-    vtkSmartPointer<vtkPolyDataMapper>::New();
-  outlineMapper->SetInputConnection(outline->GetOutputPort());
- 
-  vtkSmartPointer<vtkActor> outlineActor = 
-    vtkSmartPointer<vtkActor>::New();
-  outlineActor->SetMapper(outlineMapper);
-  outlineActor->GetProperty()->SetColor(1, 1, 1);
- 
-  // Create the RenderWindow, Renderer and Actors
-  vtkSmartPointer<vtkRenderer> renderer = 
-    vtkSmartPointer<vtkRenderer>::New();
+  vtkDataSetReader *rdr = vtkDataSetReader::New();
+  rdr->SetFileName("proj7.vtk");
+  rdr->Update();
+  cerr << "After update, file has " << rdr->GetOutput()->GetNumberOfCells() << " cells." << endl;
+
+  vtkDataSet* ds = rdr->GetOutput();
+  ds->GetPointData()->SetActiveVectors("grad");
+
   vtkSmartPointer<vtkRenderWindow> renderWindow = 
     vtkSmartPointer<vtkRenderWindow>::New();
-  renderWindow->AddRenderer(renderer);
  
-  vtkSmartPointer<vtkRenderWindowInteractor> interactor = 
+  vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor = 
     vtkSmartPointer<vtkRenderWindowInteractor>::New();
-  interactor->SetRenderWindow(renderWindow);
  
-  vtkSmartPointer<vtkInteractorStyleTrackballCamera> style = 
-    vtkSmartPointer<vtkInteractorStyleTrackballCamera>::New();
-  interactor->SetInteractorStyle(style);
+  renderWindowInteractor->SetRenderWindow(renderWindow);  
+
+  int dims[3];
+  vtkRectilinearGrid *rgrid = (vtkRectilinearGrid *) rdr->GetOutput();
+  rgrid->GetDimensions(dims);
+
+  float *X = (float *) rgrid->GetXCoordinates()->GetVoidPointer(0);
+  float *Y = (float *) rgrid->GetYCoordinates()->GetVoidPointer(0);
+  float *F = (float *) rgrid->GetPointData()->GetVectors()->GetVoidPointer(0);
+
+
+	//VTK streamlines for active vector set grad
+  vtkSmartPointer<vtkPolyData> pd =
+  vtkSmartPointer<vtkPolyData>::New();
+
+  vtkSmartPointer<vtkStreamTracer> st =
+  vtkSmartPointer<vtkStreamTracer>::New();
+
+  //set integrator to RK4
+  st->SetInputConnection(rdr->GetOutputPort());
+  st->SetIntegratorTypeToRungeKutta4();
+
+  //need a linesource for 19 points between -9 0 0 and 9 0 0
+  
+  
+  vtkSmartPointer<vtkLineSource> lineSource = 
+    vtkSmartPointer<vtkLineSource>::New();
+
+   lineSource->SetPoint1(-9, 0, 0);
+   lineSource->SetPoint2(9,0,0);
+   lineSource->SetResolution(19);
  
-  renderer->AddActor(streamLineActor);
-  renderer->AddActor(outlineActor);
- 
-  // Add the actors to the renderer, set the background and size
-  renderer->SetBackground(0.1, 0.2, 0.4);
-  renderWindow->SetSize(300, 300);
-  interactor->Initialize();
-  renderWindow->Render();
- 
-  interactor->Start();
- 
-  return EXIT_SUCCESS;
+
+  st->SetSourceConnection(lineSource->GetOutputPort());
+  st->SetIntegrationDirectionToForward();
+  //st->SetInitialIntegrationStep (1, 1.0);
+  st->SetMaximumPropagation(200);
+  st->Update();
+  
+
+   vtkSmartPointer<vtkPolyDataMapper> rgridMapper =
+   vtkSmartPointer<vtkPolyDataMapper>::New();
+    rgridMapper->SetInputConnection(st->GetOutputPort());
+    rgridMapper->SetScalarRange(1.9,5.0);
+    rgridMapper->SetColorModeToMapScalars();
+
+   vtkSmartPointer<vtkActor> rgridActor =
+    vtkSmartPointer<vtkActor>::New();
+  rgridActor->SetMapper(rgridMapper);
+  rgridActor->GetProperty()->SetColor(0,0,0);
+  
+   vtkSmartPointer<vtkRenderer> rendererBR = 
+   vtkSmartPointer<vtkRenderer>::New();
+   renderWindow->AddRenderer(rendererBR);
+   
+   renderWindowInteractor->SetRenderWindow(renderWindow);
+   rendererBR->AddActor(rgridActor);
+   rendererBR->ResetCamera();
+   renderWindowInteractor->Render();
+   renderWindowInteractor->Start();
 }
-
-
 

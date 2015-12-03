@@ -1,74 +1,3 @@
-/*
-#include <vtkVersion.h>
-#include <vtkSmartPointer.h>
-#include <vtkMarchingCubes.h>
-#include <vtkVoxelModeller.h>
-#include <vtkSphereSource.h>
-#include <vtkImageData.h>
-#include <vtkDICOMImageReader.h>
-#include <vtkPointData.h> 
-#include <vtkActor.h>
-#include <vtkPolyDataMapper.h>
-#include <vtkRenderWindowInteractor.h>
-#include <vtkRenderWindow.h>
-#include <vtkRenderer.h>
-#include <vtkRectilinearGridAlgorithm.h>
-#include <vtkDataSetReader.h>
- #include <vtkImageData.h>
-#include <vtkCellData.h>
-#include <vtkContourFilter.h>
-#include <vtkExtractVOI.h>
-#include <vtkDataSet.h>
-int main(int argc, char *argv[])
-{
-
-
-vtkDataSetReader *rdr = vtkDataSetReader::New();
-  rdr->SetFileName("proj7.vtk");
-  rdr->Update();
-  cerr << "After update, file has " << rdr->GetOutput()->GetNumberOfCells() << " cells." << endl;
-
-  vtkDataSet* ds = rdr->GetOutput();
-  ds->GetPointData()->SetActiveScalars("grad");
-  
-  vtkRectilinearGrid *rgrid = (vtkRectilinearGrid *) rdr->GetOutput();
-
-  vtkContourFilter *cf = vtkContourFilter::New();
-  cf->SetNumberOfContours(1);
-  cf->SetValue(0, 2.5);
-  cf->SetInputConnection(rdr->GetOutputPort());
-  cf->Update();
-
-
-  vtkSmartPointer<vtkRenderer> renderer = 
-    vtkSmartPointer<vtkRenderer>::New();
-  
- 
-  vtkSmartPointer<vtkRenderWindow> renderWindow = 
-    vtkSmartPointer<vtkRenderWindow>::New();
-  
-  renderWindow->AddRenderer(renderer);
-  vtkSmartPointer<vtkRenderWindowInteractor> interactor = 
-    
-  vtkSmartPointer<vtkRenderWindowInteractor>::New();
-  interactor->SetRenderWindow(renderWindow);
- 
-  vtkSmartPointer<vtkPolyDataMapper> mapper = 
-  vtkSmartPointer<vtkPolyDataMapper>::New();
-  
-  mapper->SetInputConnection(cf->GetOutputPort());
-  mapper->ScalarVisibilityOff();
- 
-  vtkSmartPointer<vtkActor> actor = 
-  vtkSmartPointer<vtkActor>::New();
-  actor->SetMapper(mapper);
- 
-  
-  interactor->Initialize();
-  interactor->Start();
-  return EXIT_SUCCESS;
-}
-*/
 
 /*=========================================================================
 
@@ -143,12 +72,15 @@ int main()
   vtkSmartPointer<vtkPolyDataMapper> win1Mapper =
     vtkSmartPointer<vtkPolyDataMapper>::New();
   win1Mapper->SetInputConnection(cf->GetOutputPort());
+  win1Mapper->SetScalarRange(2.0,4.0);
+  win1Mapper->SetColorModeToMapScalars();
+
 //so we set input connection with the countour output port
   vtkSmartPointer<vtkActor> win1Actor =
     vtkSmartPointer<vtkActor>::New();
   
   win1Actor->SetMapper(win1Mapper);
-  win1Actor->GetProperty()->SetColor(0.0,1.0,0.0);
+  //win1Actor->GetProperty()->SetColor(0.0,1.0,0.0);
 //now we use that win1mapper to set win1actors map
   vtkSmartPointer<vtkRenderer> ren1 =
     vtkSmartPointer<vtkRenderer>::New();

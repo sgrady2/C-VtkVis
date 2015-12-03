@@ -43,34 +43,31 @@ int main(int, char *[])
 
   int dims[3];
   vtkRectilinearGrid *rgrid = (vtkRectilinearGrid *) rdr->GetOutput();
-  rgrid->GetDimensions(dims);
-
-  float *X = (float *) rgrid->GetXCoordinates()->GetVoidPointer(0);
-  float *Y = (float *) rgrid->GetYCoordinates()->GetVoidPointer(0);
-  float *F = (float *) rgrid->GetPointData()->GetVectors()->GetVoidPointer(0);
+  
 
 
 	//VTK hedgehogging
 
   vtkSmartPointer<vtkArrowSource> arrowSource =
    vtkSmartPointer<vtkArrowSource>::New();
-
+   
+   arrowSource->Update();
   
    vtkSmartPointer<vtkGlyph3D> glyph3D =
     vtkSmartPointer<vtkGlyph3D>::New();
   
   vtkSmartPointer<vtkMaskPoints> maskPoints =
   vtkSmartPointer<vtkMaskPoints>::New();
-  maskPoints->SetOnRatio(2); //keep every 100th point (1/100 the number of points)
-  //maskPoints->SetInputConnection(glyph3D->GetOutputPort());
+  maskPoints->SetOnRatio(20); //keep every 20th point (1/20 the number of points)
+  maskPoints->SetInputConnection(ds->GetOutputPort());
   maskPoints->Update();
 
-  glyph3D->SetSourceConnection(arrowSource->GetOutputPort());
-  
+  glyph3D->SetSourceData(arrowSource->GetOutput());
+ 
   glyph3D->SetVectorModeToUseNormal();
 
-  glyph3D->SetInputData(rgrid);
-  //glyph3D->SetInputConnection(maskPoints->GetOutputPort());
+  //glyph3D->SetInputData(ds);
+  glyph3D->SetInputConnection(maskPoints->GetOutputPort());
 
   glyph3D->SetScaleFactor(.1);
   glyph3D->Update();
@@ -81,7 +78,9 @@ int main(int, char *[])
    vtkSmartPointer<vtkPolyDataMapper> rgridMapper =
    vtkSmartPointer<vtkPolyDataMapper>::New();
     rgridMapper->SetInputConnection(glyph3D->GetOutputPort());
- 	
+    rgridMapper->SetScalarRange(2.0,5.0);
+    rgridMapper->SetColorModeToMapScalars();
+
    vtkSmartPointer<vtkActor> rgridActor =
     vtkSmartPointer<vtkActor>::New();
   rgridActor->SetMapper(rgridMapper);

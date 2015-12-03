@@ -10,7 +10,7 @@
 #include <vtkRenderWindowInteractor.h>
 #include <vtkDataSetReader.h> 
 #include <vtkCamera.h>
-
+#include <vtkPointData.h>
 int main(int, char *[])
 { 
 
@@ -23,7 +23,9 @@ int main(int, char *[])
   ds->GetPointData()->SetActiveScalars("hardyglobal");
 
  
-  // Create a plane to cut,here it cuts in the XZ direction (xz normal=(1,0,0);XY =(0,0,1),YZ =(0,1,0)
+  // Create 3 planes to cut,here it cuts in the XZ direction (xz normal=(1,0,0);XY =(0,0,1),YZ =(0,1,0)
+
+
   vtkSmartPointer<vtkPlane> plane =
     vtkSmartPointer<vtkPlane>::New();
   plane->SetOrigin(0,0,0);
@@ -39,9 +41,13 @@ vtkSmartPointer<vtkPlane> plane2 =
   plane2->SetOrigin(0,0,0);
   plane2->SetNormal(0,0,1);
  
-  // Create cutter
+ 
+
+  // Create 3 cutters
+  
   vtkSmartPointer<vtkCutter> cutter =
-    vtkSmartPointer<vtkCutter>::New();
+  vtkSmartPointer<vtkCutter>::New();
+  
   cutter->SetCutFunction(plane);
   cutter->SetInputConnection(rdr->GetOutputPort());
   cutter->Update();
@@ -57,23 +63,33 @@ vtkSmartPointer<vtkPlane> plane2 =
   cutter2->SetCutFunction(plane2);
   cutter2->SetInputConnection(rdr->GetOutputPort());
   cutter2->Update();
+
+   //use 3 mappers to map the 3 planes
  
   vtkSmartPointer<vtkPolyDataMapper> cutterMapper =
     vtkSmartPointer<vtkPolyDataMapper>::New();
-  cutterMapper->SetInputConnection( cutter->GetOutputPort());
- 
+  //cutterMapper->SetInputConnection( poly->GetOutputPort());
+  cutterMapper->SetInputConnection(cutter->GetOutputPort()); 
+  cutterMapper->SetScalarRange(2.0,5.0);
+  cutterMapper->SetColorModeToMapScalars();
+
+  
  vtkSmartPointer<vtkPolyDataMapper> cutterMapper1 =
     vtkSmartPointer<vtkPolyDataMapper>::New();
-  cutterMapper1->SetInputConnection( cutter1->GetOutputPort()); 
+  cutterMapper1->SetInputConnection( cutter1->GetOutputPort());
+  cutterMapper1->SetScalarRange(2.0,5.0);
+  cutterMapper1->SetColorModeToMapScalars(); 
 
 vtkSmartPointer<vtkPolyDataMapper> cutterMapper2 =
     vtkSmartPointer<vtkPolyDataMapper>::New();
-  cutterMapper2->SetInputConnection( cutter2->GetOutputPort()); 
+  cutterMapper2->SetInputConnection( cutter2->GetOutputPort());
+  cutterMapper2->SetScalarRange(2.0,5.0);
+  cutterMapper2->SetColorModeToMapScalars(); 
 
  // Create plane actor
   vtkSmartPointer<vtkActor> planeActor =
     vtkSmartPointer<vtkActor>::New();
-  planeActor->GetProperty()->SetColor(4.0,2,0);
+  //planeActor->GetProperty()->SetColor(4.0,2,0);
   planeActor->GetProperty()->SetLineWidth(10);
   planeActor->SetMapper(cutterMapper);
 

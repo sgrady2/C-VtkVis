@@ -19,6 +19,14 @@
 #include <vtkCutter.h>
 #include <vtkGlyph3D.h>
 #include <vtkArrowSource.h>
+#include <vtkDataSet.h>
+#include <vtkDataSetReader.h>
+#include <vtkContourFilter.h>
+#include <vtkCamera.h>
+#include <vtkStreamTracer.h>
+#include <vtkRungeKutta4.h>
+#include <vtkMaskPoints.h>
+#include <vtkLineSource.h>
 
 int main(int, char *[])
 {
@@ -28,10 +36,10 @@ int main(int, char *[])
   cerr << "After update, file has " << rdr->GetOutput()->GetNumberOfCells() << " cells." << endl;
 
   vtkSmartPointer<vtkRenderWindow> renderWindow = 
-    vtkSmartPointer<vtkRenderWindow>::New();
+  vtkSmartPointer<vtkRenderWindow>::New();
  
   vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor = 
-    vtkSmartPointer<vtkRenderWindowInteractor>::New();
+  vtkSmartPointer<vtkRenderWindowInteractor>::New();
  
   renderWindowInteractor->SetRenderWindow(renderWindow);
  
@@ -54,47 +62,47 @@ int main(int, char *[])
 
     // Create a sphere
     vtkSmartPointer<vtkSphereSource> sphereSource = 
-      vtkSmartPointer<vtkSphereSource>::New();
+    vtkSmartPointer<vtkSphereSource>::New();
     sphereSource->SetCenter(0.0, 0.0, 0.0);
     sphereSource->SetRadius(5);
     sphereSource->Update();
  
 
-/*
+/*////////////////////////////////////
 Example for an isosurface done in VTK
 
 
-*/
+*/////////////////////////////////////
 
 //create a renderer
 
     
-    // Create a 3D model using marching cubes
-     vtkSmartPointer<vtkRectilinearGridReader> rrdr =
-    vtkSmartPointer<vtkRectilinearGridReader>::New();
-    
-    rrdr->SetFileName("proj7.vtk");
-    rrdr->Update();
-    
+  rdr->SetFileName("proj7.vtk");
+  rdr->Update();
+  cerr << "After update, file has " << rdr->GetOutput()->GetNumberOfCells() << " cells." << endl;
+//First creates a new buffer using the contour filter class
+//
+  vtkContourFilter *cf = vtkContourFilter::New();
+  cf->SetNumberOfContours(2);
+  cf->SetValue(0, 2.5);
+  cf->SetValue(1, 5.0);
+  cf->SetInputConnection(rdr->GetOutputPort());
+  cf->Update();
+  cerr << "After contouring, isosurface has " << cf->GetOutput()->GetNumberOfCells() << " triangles." << endl;
 
-    float isovalue1 = 2.5;
-    float isovalue2 = 5.0;
-
-    vtkSmartPointer<vtkMarchingCubes> mc =
-    vtkSmartPointer<vtkMarchingCubes>::New();
-    mc->SetInputConnection(rdr->GetOutputPort());
-    mc->ComputeNormalsOn();
-    mc->ComputeGradientsOn();
-    mc->SetValue(0, isovalue1);  // second value acts as threshold
-    
-   vtkSmartPointer<vtkPolyDataMapper> rgridMapper1 =
-   vtkSmartPointer<vtkPolyDataMapper>::New();
-   rgridMapper1->SetInputConnection(mc->GetOutputPort());
+  // The mapper is responsible for pushing the geometry into the graphics
+  // library. It may also do color mapping, if scalars or other attributes
+  // are defined. 
+  //
+  vtkSmartPointer<vtkPolyDataMapper> win1Mapper =
+  vtkSmartPointer<vtkPolyDataMapper>::New();
+  win1Mapper->SetInputConnection(cf->GetOutputPort());
+  win1Mapper->SetScalarRange(2.0,4.0);
+  win1Mapper->SetColorModeToMapScalars();
  	
    vtkSmartPointer<vtkActor> rgridActor1 =
-    vtkSmartPointer<vtkActor>::New();
-  rgridActor1->SetMapper(rgridMapper1);
-  rgridActor1->GetProperty()->SetColor(0,0,0);
+   vtkSmartPointer<vtkActor>::New();
+   rgridActor1->SetMapper(win1Mapper);
   
    vtkSmartPointer<vtkRenderer> rendererBL = 
    vtkSmartPointer<vtkRenderer>::New();
@@ -108,47 +116,58 @@ Example for an isosurface done in VTK
 
 
 
-/*
+/*///////////////////////////////
 
 Example for HH graph
 
 
 
-*/
+*///////////////////////////////
 
 
 
 
 
-//create a renderer
+  //create a renderer
 
-
-    rgrid->GetPointData()->SetActiveVectors("grad");
+   vtkDataSet* ds = rdr->GetOutput();
+   ds->GetPointData()->SetActiveVectors("grad");
 
 
    vtkSmartPointer<vtkArrowSource> arrowSource =
    vtkSmartPointer<vtkArrowSource>::New();
- 
+   
+   arrowSource->Update();
+  
    vtkSmartPointer<vtkGlyph3D> glyph3D =
-    vtkSmartPointer<vtkGlyph3D>::New();
-  glyph3D->SetSourceConnection(arrowSource->GetOutputPort());
-  glyph3D->SetVectorModeToUseNormal();
-#if VTK_MAJOR_VERSION <= 5
-  glyph3D->SetInput(rgrid);
-#else
-  glyph3D->SetInputData(rgrid);
-#endif
-  glyph3D->SetScaleFactor(.2);
-  glyph3D->Update();
+   vtkSmartPointer<vtkGlyph3D>::New();
+  
+   vtkSmartPointer<vtkMaskPoints> maskPoints =
+   vtkSmartPointer<vtkMaskPoints>::New();
+   maskPoints->SetOnRatio(20); //keep every 20th point (1/20 the number of points)
+   maskPoints->SetInputData(ds);
+   maskPoints->Update();
+
+   glyph3D->SetSourceData(arrowSource->GetOutput());
  
+   glyph3D->SetVectorModeToUseNormal();
+
+   //glyph3D->SetInputData(ds);
+   glyph3D->SetInputConnection(maskPoints->GetOutputPort());
+ 
+   glyph3D->SetScaleFactor(.1);
+   glyph3D->Update();
+
    vtkSmartPointer<vtkPolyDataMapper> rgridMapper =
    vtkSmartPointer<vtkPolyDataMapper>::New();
    rgridMapper->SetInputConnection(glyph3D->GetOutputPort());
- 	
+   rgridMapper->SetScalarRange(1.9,5.0);
+   rgridMapper->SetColorModeToMapScalars();
+
    vtkSmartPointer<vtkActor> rgridActor =
-    vtkSmartPointer<vtkActor>::New();
-  rgridActor->SetMapper(rgridMapper);
-  rgridActor->GetProperty()->SetColor(0,0,0);
+   vtkSmartPointer<vtkActor>::New();
+   rgridActor->SetMapper(rgridMapper);
+   rgridActor->GetProperty()->SetColor(0,0,0);
   
    vtkSmartPointer<vtkRenderer> rendererBR = 
    vtkSmartPointer<vtkRenderer>::New();
@@ -164,7 +183,7 @@ Example for HH graph
 
 
 
-/*
+/*///////////////////////////////////////
 
 
 
@@ -172,100 +191,211 @@ Example for HH graph
 TL
 
 
-*/
+*///////////////////////////////////////
 
 
 
 
 //create a renderer
-    vtkDataSet* dataSetA = rdr->GetOutput();
-    dataSetA->GetPointData()->SetActiveScalars("hardyglobal");
-
-    //create a plane
     
-    vtkSmartPointer<vtkPlane> plane =
-    vtkSmartPointer<vtkPlane>::New();
-    plane->SetOrigin(0,0,0);
-    plane->SetNormal(0,0,0);
+  rdr->SetFileName("proj7.vtk");
+  rdr->Update();
+  cerr << "After update, file has " << rdr->GetOutput()->GetNumberOfCells() << " cells." << endl;
 
-    //create a cutter
-    
-    vtkSmartPointer<vtkCutter> cutter =
+  ds = rdr->GetOutput();
+  ds->GetPointData()->SetActiveScalars("hardyglobal");
+
+ 
+  // Create 3 planes to cut,here it cuts in the XZ direction (xz normal=(1,0,0);XY =(0,0,1),YZ =(0,1,0)
+
+
+  vtkSmartPointer<vtkPlane> plane =
+  vtkSmartPointer<vtkPlane>::New();
+  plane->SetOrigin(0,0,0);
+  plane->SetNormal(1,0,0);
+
+  vtkSmartPointer<vtkPlane> plane1 =
+  vtkSmartPointer<vtkPlane>::New();
+  plane1->SetOrigin(0,0,0);
+  plane1->SetNormal(0,1,0);
+
+  vtkSmartPointer<vtkPlane> plane2 =
+  vtkSmartPointer<vtkPlane>::New();
+  plane2->SetOrigin(0,0,0);
+  plane2->SetNormal(0,0,1);
+ 
+ 
+
+  // Create 3 cutters
+  
+  vtkSmartPointer<vtkCutter> cutter =
+  vtkSmartPointer<vtkCutter>::New();
+  
+  cutter->SetCutFunction(plane);
+  cutter->SetInputConnection(rdr->GetOutputPort());
+  cutter->Update();
+
+  vtkSmartPointer<vtkCutter> cutter1 =
     vtkSmartPointer<vtkCutter>::New();
+  cutter1->SetCutFunction(plane1);
+  cutter1->SetInputConnection(rdr->GetOutputPort());
+  cutter1->Update();
 
-    cutter->SetCutFunction(plane);
-  //  cutter->SetInputConnection(dataSetA->getOutputPort());
-    cutter->Update();
+ vtkSmartPointer<vtkCutter> cutter2 =
+    vtkSmartPointer<vtkCutter>::New();
+  cutter2->SetCutFunction(plane2);
+  cutter2->SetInputConnection(rdr->GetOutputPort());
+  cutter2->Update();
 
-    vtkSmartPointer<vtkPolyDataMapper> cutterMapper =
-    vtkSmartPointer<vtkPolyDataMapper>::New();
-    cutterMapper->SetInputConnection( cutter->GetOutputPort());
+   //use 3 mappers to map the 3 planes
+ 
+  vtkSmartPointer<vtkPolyDataMapper> cutterMapper =
+  vtkSmartPointer<vtkPolyDataMapper>::New();
+  
+  //cutterMapper->SetInputConnection( poly->GetOutputPort());
+  cutterMapper->SetInputConnection(cutter->GetOutputPort()); 
+  cutterMapper->SetScalarRange(1.9,5.0);
+  cutterMapper->SetColorModeToMapScalars();
 
-    vtkSmartPointer<vtkActor> planeActor =
-    vtkSmartPointer<vtkActor>::New();
-  planeActor->GetProperty()->SetColor(1.0,1,0);
-  planeActor->GetProperty()->SetLineWidth(2);
+  
+  vtkSmartPointer<vtkPolyDataMapper> cutterMapper1 =
+  vtkSmartPointer<vtkPolyDataMapper>::New();
+  cutterMapper1->SetInputConnection( cutter1->GetOutputPort());
+  cutterMapper1->SetScalarRange(1.9,5.0);
+  cutterMapper1->SetColorModeToMapScalars(); 
+
+  vtkSmartPointer<vtkPolyDataMapper> cutterMapper2 =
+  vtkSmartPointer<vtkPolyDataMapper>::New();
+  cutterMapper2->SetInputConnection( cutter2->GetOutputPort());
+  cutterMapper2->SetScalarRange(1.9,5.0);
+  cutterMapper2->SetColorModeToMapScalars(); 
+  //set camera so we can see initially
+
+  vtkSmartPointer<vtkCamera> camera = 
+  vtkSmartPointer<vtkCamera>::New();
+  camera->SetPosition(10, 20, -50);
+  //camera->Zoom(-5);
+  camera->SetFocalPoint(0, 0, 0);
+
+
+ // Create 3 plane actors
+  vtkSmartPointer<vtkActor> planeActor =
+  vtkSmartPointer<vtkActor>::New();
+  
+
+  //Need 3 plane actors
+
+  planeActor->GetProperty()->SetLineWidth(10);
   planeActor->SetMapper(cutterMapper);
 
-// Create cube actor
-  vtkSmartPointer<vtkActor> cubeActor =
+    vtkSmartPointer<vtkActor> planeActor1 =
     vtkSmartPointer<vtkActor>::New();
-  cubeActor->GetProperty()->SetColor(0.5,1,0.5);
-  cubeActor->GetProperty()->SetOpacity(0.5);
-  //cubeActor->SetMapper(cubeMapper);
+  planeActor1->GetProperty()->SetColor(1.0,1,0);
+  planeActor1->GetProperty()->SetLineWidth(10);
+  planeActor1->SetMapper(cutterMapper1);
 
-    //vtkSmartPointer<vtkActor> rgridActor =
-    //vtkSmartPointer<vtkActor>::New();
-    //rgridActor->SetMapper(rgridMapper);
-    //rgridActor->GetProperty()->SetColor(0,0,0);
-  rendererBR->AddActor(planeActor);
-   rendererBR->AddActor(cubeActor);
+vtkSmartPointer<vtkActor> planeActor2 =
+    vtkSmartPointer<vtkActor>::New();
+  planeActor2->GetProperty()->SetColor(2.0,2,0);
+  planeActor2->GetProperty()->SetLineWidth(10);
+  planeActor2->SetMapper(cutterMapper2);
+ 
+	//Top Left renderer creation
+
 
    vtkSmartPointer<vtkRenderer> rendererTL = 
    vtkSmartPointer<vtkRenderer>::New();
+  rendererTL->AddActor(planeActor);
+  rendererTL->AddActor(planeActor1);
+  rendererTL->AddActor(planeActor2);
+  rendererTL->SetActiveCamera(camera); 
    rendererTL->SetViewport(xmins[2],ymins[2],xmaxs[2],ymaxs[2]);
    renderWindow->AddRenderer(rendererTL);
    
    renderWindowInteractor->SetRenderWindow(renderWindow);
-   rendererBR->ResetCamera();
+   rendererTL->ResetCamera();
    renderWindowInteractor->Render();
 
 
 
 
-/*
-tr streamlines of grad using RK4 seed location go from -9, 0 0 to 9, 0 0 
+/*////////////////////////////////////
+
+
+top right, streamlines of grad using RK4 seed location go from -9, 0 0 to 9, 0 0 
 there are 19 total seeds, meaning they cover each integer
 
 
 
 
-*/
+*////////////////////////////////////
 
  //create a renderer
-    vtkSmartPointer<vtkRenderer> rendererTR = 
-      vtkSmartPointer<vtkRenderer>::New();
 
-    renderWindow->AddRenderer(rendererTR);
-    rendererTR->SetViewport(xmins[3],ymins[3],xmaxs[3],ymaxs[3]);
 
-    vtkSmartPointer<vtkPolyDataMapper> mapperTR = 
-      vtkSmartPointer<vtkPolyDataMapper>::New();
-    mapperTR->SetInputConnection(sphereSource->GetOutputPort());
-    vtkSmartPointer<vtkActor> actorTR = vtkSmartPointer<vtkActor>::New();
-    actorTR->SetMapper(mapperTR);
-    rendererTR->AddActor(actorTR);
-    rendererTR->ResetCamera();
+   rdr->SetFileName("proj7.vtk");
+   rdr->Update();
+   cerr << "After update, file has " << rdr->GetOutput()->GetNumberOfCells() << " cells." << endl;
+
+   ds->GetPointData()->SetActiveVectors("grad");
+
+
+   //VTK streamlines for active vector set grad
+   vtkSmartPointer<vtkPolyData> pd =
+   vtkSmartPointer<vtkPolyData>::New();
+
+   vtkSmartPointer<vtkStreamTracer> st =
+   vtkSmartPointer<vtkStreamTracer>::New();
+
+   //set integrator to RK4
+   st->SetInputConnection(rdr->GetOutputPort());
+   st->SetIntegratorTypeToRungeKutta4();
+
+   //need a linesource for 19 points between -9 0 0 and 9 0 0
+   //this can be thought of as a rake
+  
+   vtkSmartPointer<vtkLineSource> lineSource = 
+   vtkSmartPointer<vtkLineSource>::New();
+
+   lineSource->SetPoint1(-9, 0, 0);
+   lineSource->SetPoint2(9,0,0);
+   lineSource->SetResolution(19);
  
-    renderWindow->Render();
-    renderWindow->SetWindowName("Multiple ViewPorts");
+  //set connection with rake and set max allowance
 
+   st->SetSourceConnection(lineSource->GetOutputPort());
+   st->SetIntegrationDirectionToForward();
+   st->SetMaximumPropagation(200);
+   st->Update();
+  
+   //Mapper for stream tracer
 
-    renderWindowInteractor->Start();
+   vtkSmartPointer<vtkPolyDataMapper> rgridMapperst =
+   vtkSmartPointer<vtkPolyDataMapper>::New()'
+   rgridMapperst->SetInputConnection(st->GetOutputPort());
+   rgridMapperst->SetScalarRange(1.9,5.0);
+   rgridMapperst->SetColorModeToMapScalars();
+   
+   //Stream Tracor Actor
+	
+   vtkSmartPointer<vtkActor> rgridActorst =
+   vtkSmartPointer<vtkActor>::New();
+   rgridActorst->SetMapper(rgridMapperst);
+  
+  
+   //Create top right renderer and add to render window
 
-
-    //vtkDataSet* ds = rdr->GetOutput();
-    rgrid->GetPointData()->SetActiveVectors("grad");
+   vtkSmartPointer<vtkRenderer> rendererTR = 
+   vtkSmartPointer<vtkRenderer>::New();
+   rendererTR->AddActor(rgridActorst);
+   rendererTR->ResetCamera();
+   rendererTR->SetViewport(xmins[3],ymins[3],xmaxs[3],ymaxs[3]);
+   renderWindow->AddRenderer(rendererTR);
+   
+   renderWindowInteractor->SetRenderWindow(renderWindow);
+   rendererTR->AddActor(rgridActorst);
+   rendererTR->ResetCamera();
+   renderWindowInteractor->Render();
 
 
 renderWindowInteractor->Start();
